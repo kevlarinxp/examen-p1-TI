@@ -38,129 +38,32 @@
 </head>
 <body>
   <?php
-  if (strlen($r_nombreCompleto) > 90) {
-    printf("<script>
-        swal ({
-        title: 'Nombre completo',
-        text: 'El nombre del personal supera el tamaño permitido',
-        type: 'error',
-        showCancelButton: false,
-        confirmButtonText: 'Ok',
-        closeOnConfirm: true
-      }, function(isConfirm){
-        if (isConfirm) {
-          location.href='agregarPersonal';
-        }
-      });
-    </script>");
-  } else if (strlen($r_nick) > 15) {
-    printf("<script>
-        swal ({
-        title: 'Nombre de usuario',
-        text: 'El nombre de usuario del personal supera el tamaño permitido',
-        type: 'error',
-        showCancelButton: false,
-        confirmButtonText: 'Ok',
-        closeOnConfirm: true
-      }, function(isConfirm){
-        if (isConfirm) {
-          location.href='agregarPersonal';
-        }
-      });
-    </script>");
-  } else if (strlen($r_password) > 32) {
-    printf("<script>
-        swal ({
-        title: 'Contraseña',
-        text: 'La contraseña del personal supera el tamaño permitido',
-        type: 'error',
-        showCancelButton: false,
-        confirmButtonText: 'Ok',
-        closeOnConfirm: true
-      }, function(isConfirm){
-        if (isConfirm) {
-          location.href='agregarPersonal';
-        }
-      });
-    </script>");
-  } else if (strlen($r_direccion) > 50) {
-    printf("<script>
-        swal ({
-        title: 'Dirección',
-        text: 'La dirección del personal supera el tamaño permitido',
-        type: 'error',
-        showCancelButton: false,
-        confirmButtonText: 'Ok',
-        closeOnConfirm: true
-      }, function(isConfirm){
-        if (isConfirm) {
-          location.href='agregarPersonal';
-        }
-      });
-    </script>");
-  } else if (strlen($r_celular) > 15) {
-    printf("<script>
-        swal ({
-        title: 'Celular',
-        text: 'El celular del personal supera el tamaño permitido',
-        type: 'error',
-        showCancelButton: false,
-        confirmButtonText: 'Ok',
-        closeOnConfirm: true
-      }, function(isConfirm){
-        if (isConfirm) {
-          location.href='agregarPersonal.php';
-        }
-      });
-    </script>");
+  if (strlen($r_email) > 50) {
+    printf("<script>alert('El correo es muy largo');</script>");
+  } else if (strlen($r_pass) > 32 || strlen($r_pass_2) > 32 ) {
+    printf("<script>alert('El password es muy largo');</script>");
+  } else if (strlen($r_nombres) > 30) {
+    printf("<script>alert('Los nombres son muy largos');</script>");
+  } else if (strlen($r_apellidos) > 50) {
+    printf("<script>alert('Los apellidos son muy largos');</script>");
+  } else if (strlen($r_telefono) > 15) {
+    printf("<script>alert('El telefono es muy largo');</script>");
+  } else if (strlen($r_direccion) > 80) {
+    printf("<script>alert('La dirección es muy larga');</script>");
+  } else if (strlen($r_twitter) > 80) {
+    printf("<script>alert('El twitter es muy largo');</script>");
+  } else if (strlen($r_facebook) > 80) {
+    printf("<script>alert('El facebook es muy largo');</script>");
+  } else if (strlen($r_gplus) > 80) {
+    printf("<script>alert('El Google Plus es muy largo');</script>");
   } else {
-    $esAdministrador = 0;
-    $esVentas = 0;
-    $esRedes = 0;
-    $esTecnico = 0;
-    if ($r_tipoUsuario == 1) {
-      $esAdministrador = 1;
-    } else if ($r_tipoUsuario == 2) {
-      $esVentas = 1;
-    } else if ($r_tipoUsuario == 3) {
-      $esTecnico = 1;
-    } else {
-      $esRedes = 1;
-    }
     include("../conexion.php");
-    mysqli_set_charset($link, "latin1_swedish_ci");
-    $consulta = "INSERT INTO usuarios (nombreUsuario, nick, pass, direccion, celular, acceso, conectado, escribiendo, administrador, ventas, redes, tecnico) VALUES('".mysqli_real_escape_string($link, $r_nombreCompleto)."', '".mysqli_real_escape_string($link, $r_nick)."', md5('".mysqli_real_escape_string($link, $r_password)."'), '".mysqli_real_escape_string($link, $r_direccion)."', '".$r_celular."', 1, 0, 0, ".$esAdministrador.", ".$esVentas.", ".$esRedes.", ".$esTecnico.");";
+    $consulta = "INSERT INTO usuarios (pass, nombre, apellidos, celular, direccion, twitter, facebook, gplus, correo) VALUES(md5('".mysqli_real_escape_string($link, $r_password)."'), '".mysqli_real_escape_string($link, $r_nombres)."', '".mysqli_real_escape_string($link, $r_apellidos)."', '".$r_telefono."', '".$r_direccion."', '".$r_twitter."', '".$r_facebook."', '".$r_gplus."', '".$r_email."');";
     $esExitosa = mysqli_query($link,$consulta);
     if ($esExitosa) {
-      printf("<script>
-          swal ({
-          title: 'Personal almacenado',
-          text: 'El personal fue almacenado correctamente',
-          type: 'success',
-          showCancelButton: false,
-          confirmButtonText: 'Ok',
-          closeOnConfirm: true
-        }, function(isConfirm){
-          if (isConfirm) {
-            location.href='index';
-          }
-        });
-      </script>");
+      printf("<script>alert('¡USUARIO REGISTRADO!');</script>");
     } else {
-      printf("<script>
-          swal ({
-          title: 'Personal no almacenado',
-          text: 'El personal no fue almacenado correctamente, intentelo nuevamente',
-          type: 'error',
-          showCancelButton: false,
-          confirmButtonText: 'Ok',
-          closeOnConfirm: true
-        }, function(isConfirm){
-          if (isConfirm) {
-            location.href='agregarPersonal';
-          }
-        });
-      </script>");
+      printf("<script>alert('¡USUARIO REGISTRADO!');</script>");
     }
     mysqli_close($link);
   }

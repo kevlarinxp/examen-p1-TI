@@ -27,10 +27,10 @@
   <fieldset>
     <h2 class="fs-title">Crea tu cuenta</h2>
     <h3 class="fs-subtitle">Paso 1 de 3</h3>
-    <input type="text" name="v_email" placeholder="Correo electrónico" />
-    <input type="password" name="v_pass" placeholder="Contraseña" />
-    <input type="password" name="v_cpass" placeholder="Confirma tu contraseña" />
-    <input type="button" name="next" class="next action-button" value="Siguiente" />
+    <input type="email" name="v_email" placeholder="Correo electrónico" required/>
+    <input type="password" name="v_pass" placeholder="Contraseña" required/>
+    <input type="password" name="v_cpass" placeholder="Confirma tu contraseña" required/>
+    <input type="button" name="next" class="next action-button" value="Siguiente"/>
   </fieldset>
   <fieldset>
     <h2 class="fs-title">Perfil de redes sociales</h2>
@@ -44,9 +44,9 @@
   <fieldset>
     <h2 class="fs-title">Detalles personales</h2>
     <h3 class="fs-subtitle">La información proporcionada es segura</h3>
-    <input type="text" name="v_nombres" placeholder="Nombre (s)" />
-    <input type="text" name="v_apellidos" placeholder="Apellidos" />
-    <input type="text" name="v_telf" placeholder="Celular" />
+    <input type="text" name="v_nombres" placeholder="Nombre (s)" required/>
+    <input type="text" name="v_apellidos" placeholder="Apellidos" required/>
+    <input type="tel" name="v_telf" placeholder="Celular" required/>
     <textarea name="v_direccion" placeholder="Dirección completa"></textarea>
     <input type="button" name="previous" class="previous action-button" value="Anterior" />
     <input type="submit" name="submit" class="submit action-button" value="Registrar" />
