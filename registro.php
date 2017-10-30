@@ -63,7 +63,7 @@
     if ($esExitosa) {
       printf("<script>alert('¡USUARIO REGISTRADO!');</script>");
     } else {
-      printf("<script>alert('¡USUARIO REGISTRADO!');</script>");
+      printf("<script>alert('¡USUARIO NO REGISTRADO!');</script>");
     }
     mysqli_close($link);
   }
