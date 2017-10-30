@@ -23,8 +23,8 @@
       $r_gplus = "";
     }
   } else {
-    header("Location:index.php");
-		exit();
+    //header("Location:index.php");
+		//exit();
   }
 ?>
 <!DOCTYPE html>
@@ -57,7 +57,7 @@
   } else if (strlen($r_gplus) > 80) {
     printf("<script>alert('El Google Plus es muy largo');</script>");
   } else {
-    include("../conexion.php");
+    include("conexion.php");
     $consulta = "INSERT INTO usuarios (pass, nombre, apellidos, celular, direccion, twitter, facebook, gplus, correo) VALUES(md5('".mysqli_real_escape_string($link, $r_password)."'), '".mysqli_real_escape_string($link, $r_nombres)."', '".mysqli_real_escape_string($link, $r_apellidos)."', '".$r_telefono."', '".$r_direccion."', '".$r_twitter."', '".$r_facebook."', '".$r_gplus."', '".$r_email."');";
     $esExitosa = mysqli_query($link,$consulta);
     if ($esExitosa) {
