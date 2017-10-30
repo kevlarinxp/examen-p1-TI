@@ -16,8 +16,7 @@
 <body>
 
   <!-- formulario múltiple-->
-<form id="msform">
-
+<form id="msform" action="registro.php" method="post">
   <!-- barra de progreso -->
   <ul id="progressbar">
     <li class="active">Activación de cuenta</li>
@@ -52,7 +51,6 @@
     <input type="button" name="previous" class="previous action-button" value="Anterior" />
     <input type="submit" name="submit" class="submit action-button" value="Registrar" />
   </fieldset>
-
 </form>
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/jqueryeasing.min.js"></script>
